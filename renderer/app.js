@@ -2,7 +2,8 @@ import { createSSRApp, h, provide } from 'vue'
 import PageShell from './PageShell.vue'
 import { setPageContext } from './usePageContext'
 export { createApp }
-import { DefaultApolloClient } from '@vue/apollo-composable'
+import pkg from '@vue/apollo-composable'
+const { DefaultApolloClient } = pkg
 
 function createApp(pageContext, apolloClient) {
   const { Page, pageProps } = pageContext
