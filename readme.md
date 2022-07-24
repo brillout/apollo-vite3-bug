@@ -16,16 +16,32 @@ git clone git@github.com:brillout/apollo-vite3-bug && cd apollo-vite3-bug/ && pn
 Observe in the terminal:
 
 ```
-~/tmp/apollo-vite3-bug (main u=) p build
+Server running at http://localhost:3000
+file:///home/romuuu/tmp/apollo-vite3-bug/dist/server/assets/_default.page.server.eeb1b5cf.js:6
+import { DefaultApolloClient } from "@vue/apollo-composable";
+         ^^^^^^^^^^^^^^^^^^^
+SyntaxError: Named export 'DefaultApolloClient' not found. The requested module '@vue/apollo-composable' is a CommonJS module, which may not support all module.exports as named exports.
+CommonJS modules can always be imported via the default export, for example using:
 
-> @ build /home/romuuu/tmp/apollo-vite3-bug
-> npm run build
+import pkg from '@vue/apollo-composable';
+const { DefaultApolloClient } = pkg;
+```
 
+If we follow the suggested workaround and apply []() we then get:
 
-> build
+```
 > vite build
 
 vite v3.0.2 building for production...
-✓ 169 modules transformed.
-[vite]: Rollup failed to resolve import "react" from "node_modules/.pnpm/@apollo+client@3.6.9_graphql@16.5.0/node_modules/@apollo/client/react/context/ApolloConsumer.js".
+✓ 338 modules transformed.
+'default' is not exported by node_modules/.pnpm/@vue+apollo-composable@4.0.0-alpha.19_evl73agsd2l2vqwzmhm3tuflgi/node_modules/@vue/apollo-composable/dist/index.esm.js, imported by renderer/app.js
+file: /home/romuuu/tmp/apollo-vite3-bug/renderer/app.js:5:7
+3: import { setPageContext } from './usePageContext'
+4: export { createApp }
+5: import pkg from '@vue/apollo-composable'
+          ^
+6: const { DefaultApolloClient } = pkg
+error during build:
+Error: 'default' is not exported by node_modules/.pnpm/@vue+apollo-composable@4.0.0-alpha.19_evl73agsd2l2vqwzmhm3tuflgi/node_modules/@vue/apollo-composable/dist/index.esm.js, imported by renderer/app.js
+    at error (file:///home/romuuu/tmp/apollo-vite3-bug/node_modules/.pnpm/rollup@2.77.0/node_modules/rollup/dist/es/shared/rollup.js:1858:30)
 ```
