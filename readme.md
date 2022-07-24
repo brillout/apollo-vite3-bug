@@ -4,16 +4,16 @@ Bug reproduction.
 git clone git@github.com:brillout/apollo-vite3-bug
 cd apollo-vite3-bug/
 pnpm install
-pnpm run build
+pnpm run prod
 ```
 
 Same as single line (copy-paste me):
 
 ```shell
-git clone git@github.com:brillout/apollo-vite3-bug && cd apollo-vite3-bug/ && pnpm install && pnpm run build
+git clone git@github.com:brillout/apollo-vite3-bug && cd apollo-vite3-bug/ && pnpm install && pnpm run prod
 ```
 
-Observe in the terminal:
+Go to [localhost:3000](http://localhost:3000) Observe in the terminal:
 
 ```
 Server running at http://localhost:3000
@@ -27,9 +27,12 @@ import pkg from '@vue/apollo-composable';
 const { DefaultApolloClient } = pkg;
 ```
 
-If we follow the suggested workaround and apply [d49d7](https://github.com/brillout/apollo-vite3-bug/commit/d49d7672798257740953edab5340cea6b0061023) we then get:
+If we follow the suggested workaround `git cherry-pick d49d7` ([d49d7](https://github.com/brillout/apollo-vite3-bug/commit/d49d7672798257740953edab5340cea6b0061023)) we then get:
 
 ```
+# Let's try again
+$ pnpm run prod
+
 > vite build
 
 vite v3.0.2 building for production...
