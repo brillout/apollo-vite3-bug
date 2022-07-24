@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { gql } from '@apollo/client/core'
+import { gql } from '@apollo/client/core/index.js'
 import { useQuery, useResult } from '@vue/apollo-composable'
 const getChar = gql`
   query {
