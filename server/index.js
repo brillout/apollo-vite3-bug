@@ -5,7 +5,7 @@ const { renderPage } = require('vite-plugin-ssr')
 const isProduction = process.env.NODE_ENV === 'production'
 const root = `${__dirname}/..`
 const fetch = require('cross-fetch')
-const { ApolloClient, createHttpLink, InMemoryCache } = require('@apollo/client')
+const { ApolloClient, createHttpLink, InMemoryCache } = require('@apollo/client/core')
 startServer()
 
 async function startServer() {
