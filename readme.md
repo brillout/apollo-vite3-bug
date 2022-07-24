@@ -27,7 +27,7 @@ import pkg from '@vue/apollo-composable';
 const { DefaultApolloClient } = pkg;
 ```
 
-If we follow the suggested workaround and apply []() we then get:
+If we follow the suggested workaround and apply [d49d7](https://github.com/brillout/apollo-vite3-bug/commit/d49d7672798257740953edab5340cea6b0061023) we then get:
 
 ```
 > vite build
